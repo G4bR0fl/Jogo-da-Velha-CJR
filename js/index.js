@@ -26,7 +26,7 @@ function is_game_finished(game_matrix){
         check_win_O[j] = true;
         if (check_win_O[0] == true && check_win_O[1] == true && check_win_O[2] == true) {
           console.log("O has won");
-          return gameresult = true;
+          return game_result = true;
         }
       }
       // In case matrix has 'X'
@@ -34,7 +34,7 @@ function is_game_finished(game_matrix){
         check_win_X[j] = true;
         if (check_win_X[0] == true && check_win_X[1] == true && check_win_X[2] == true) {
           console.log("X has won");
-          return gameresult = true;
+          return game_result = true;
         }
       }
     }
@@ -54,7 +54,7 @@ function is_game_finished(game_matrix){
         check_win_O[i] = true;
         if (check_win_O[0] == true && check_win_O[1] == true && check_win_O[2] == true) {
           console.log("O has won");
-          return gameresult = true;
+          return game_result = true;
         }
       }
       // In case matrix has 'X'
@@ -62,7 +62,7 @@ function is_game_finished(game_matrix){
         check_win_X[i] = true; 
         if (check_win_X[0] == true && check_win_X[1] == true && check_win_X[2] == true) {
           console.log("X has won");
-          return gameresult = true;
+          return game_result = true;
         }
       }
     }
@@ -76,34 +76,30 @@ function is_game_finished(game_matrix){
   }
   // Checking diagonals
   if (game_matrix[0][0] == game_matrix[1][1] && game_matrix[0][0] == game_matrix[2][2]){
-    console.log("Player has won");
-    return game_result = true;
+    if (game_matrix[0][0] == 'X'){
+      console.log("X has won");
+      return game_result = true;
+    }
+    else{
+      if (game_matrix[0][0] == 'O'){
+        console.log("O has won");
+        return game_result = true;
+      }
+    }
   }
   else{
     if (game_matrix[2][0] == game_matrix[1][1] && game_matrix[2][0] == game_matrix[0][2]) {
-      console.log("Player has won");
-      return game_result = true;
+      if (game_matrix[2][0] == 'X') {
+        console.log("X has won");
+        return game_result = true;
+      }
+      else {
+        if (game_matrix[2][0] == 'O'){
+          console.log("O has won");
+          return game_result = true;
+        }
+      }
     }
   }
   return game_result;
 }
-
-function main() {
-  game_matrix = create_matrix();
-
-  game_matrix[0][0] = 'X';
-  game_matrix[0][1] = 'O';
-  game_matrix[0][2] = 'X';
-  game_matrix[1][0] = 'X';
-  game_matrix[1][1] = 'O';
-  game_matrix[1][2] = 'O';
-  game_matrix[2][0] = 'O';
-  game_matrix[2][1] = 'X';
-  game_matrix[2][2] = 'O';
-  
-  finish = is_game_finished(game_matrix);
-  console.log(game_matrix.join("\n"));  
-  console.log(finish);
-}
-
-main();

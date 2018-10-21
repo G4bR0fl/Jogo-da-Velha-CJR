@@ -15,7 +15,7 @@ function create_matrix(){
 // This function checks if the game has finished or not
 function is_game_finished(game_matrix){
   var check_win = [false, false, false];
-  var finish;
+  var game_result = false;
   // Checking columns 
   for(var i = 0; i < 3; i++){
     for(var j = 0; j < 3; j++){
@@ -42,6 +42,7 @@ function is_game_finished(game_matrix){
     }
     if(check_win[0] == true && check_win[1] == true && check_win[2] == true){
       console.log("Player has won");
+      return gameresult = true;
     }
   }
   // Checking Rows
@@ -70,44 +71,20 @@ function is_game_finished(game_matrix){
     }
     if (check_win[0] == true && check_win[1] == true && check_win[2] == true) {
       console.log("Player has won");
+      return game_result = true;
     }
   }
   // Checking diagonals
   if (game_matrix[0][0] == game_matrix[1][1] && game_matrix[0][0] == game_matrix[2][2]){
     console.log("Player has won");
+    return game_result = true;
   }
   else{
     if (game_matrix[2][0] == game_matrix[1][1] && game_matrix[2][0] == game_matrix[0][2]) {
       console.log("Player has won");
+      return game_result = true;
     }
   }
+  return game_result;
 }
 
-// 
-// This function let's the game play by both players that are playing.
-function play(){
-  var player1, player2;
-  
-
-}
-
-
-
-// Not fully functional, but it's compiling
-// This function is responsible for outputting alerts, which tells that the game has ended.
-function reset_message(counter, game_result){
-  if ( (counter == 9) || (game_result == false) ){
-    alert("Draw.")
-  }
-  else{
-    if(game_result == true) {
-      alert("Player x has won."); // Show which player has won, not finished yet.
-    }
-  }
-}
-
-function main(){
-
-}
-
-main();

@@ -4,6 +4,7 @@ let game_matrix = [[null, null, null],
                   [null, null, null],
                   [null, null, null]];
 
+
 //------------------END_VARIABLES------------------//
 
 //--------------------LISTENERS--------------------//
@@ -17,6 +18,7 @@ document.getElementById("btn_reset").addEventListener("click", reset);
 function reset() {
   // Reset all game_matrix itens to null
   game_matrix = game_matrix.map( vet => vet.map( item => null ) );
+
 }
 
 // Compiling
@@ -120,7 +122,3 @@ function is_game_finished(game_matrix) {
 }
 
 //------------------END_FUNCTIONS------------------//
-
-
-
-

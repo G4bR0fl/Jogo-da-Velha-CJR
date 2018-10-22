@@ -1,27 +1,14 @@
 // Compiling
-// This function creates and return a new game matrix each time it's called.
-function create_matrix(){
-  var game_matrix = [];
-  for(var i = 0; i < 3; i++){
-    game_matrix[i] = [];
-    for(var j = 0; j < 3; j++){
-      game_matrix[i][j] = null;
-    }
-  }
-  return game_matrix;
-}
-
-// Compiling
 // This function checks if the game has finished or not
 function is_game_finished(game_matrix){
-  var check_win_X = [false, false, false];
-  var check_win_O = [false, false, false];
-  var counter = 0; 
-  var game_result = false;
-  var return_variables = [];
+  let check_win_X = [false, false, false];
+  let check_win_O = [false, false, false];
+  let counter = 0; 
+  let game_result = false;
+  let return_variables = [];
   // Checking Rows 
-  for(var i = 0; i < 3; i++){
-    for(var j = 0; j < 3; j++){
+  for(let i = 0; i < 3; i++){
+    for(let j = 0; j < 3; j++){
       // In case matrix has 'O'
       if (game_matrix[i][j] == 'O'){
         check_win_O[j] = true;
@@ -42,7 +29,7 @@ function is_game_finished(game_matrix){
       }
     }
 
-    for (var k = 0; k < 3; k++) {
+    for (let k = 0; k < 3; k++) {
       check_win_O[k] = false;
     }
     for (k = 0; k < 3; k++) {

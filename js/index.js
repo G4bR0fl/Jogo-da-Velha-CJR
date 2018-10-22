@@ -120,6 +120,3 @@ function is_game_finished(game_matrix) {
 
 //------------------END_FUNCTIONS------------------//
 
-
-
-

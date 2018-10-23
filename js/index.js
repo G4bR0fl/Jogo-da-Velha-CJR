@@ -5,14 +5,55 @@ let game_matrix = [[null, null, null],
 [null, null, null]];
 
 //------------------END_VARIABLES------------------//
-
+//
 //--------------------LISTENERS--------------------//
 
 document.getElementById("btn_reset").addEventListener("click", reset);
+document.getElementById("a1").addEventListener("click", () => {
+  putElement("a1");
+});
+document.getElementById("a2").addEventListener("click", () => {
+  putElement("a2");
+});
+document.getElementById("a3").addEventListener("click", () => {
+  putElement("a3");
+});
+document.getElementById("b1").addEventListener("click", () => {
+  putElement("b1");
+  });
+document.getElementById("b2").addEventListener("click", () => {
+  putElement("b2");
+  });
+document.getElementById("b3").addEventListener("click", () => {
+  putElement("b3");
+  });
+document.getElementById("c1").addEventListener("click", () => {
+  putElement("c1");
+  });
+document.getElementById("c2").addEventListener("click",  () => {
+  putElement("c2");
+  });
+document.getElementById("c3").addEventListener("click",  () => {
+  putElement("c3");
+  });
 
 //------------------END_LISTENERS------------------//
 
 //--------------------FUNCTIONS--------------------//
+
+var counter = 0;
+//This function 
+function putElement(id){
+
+  console.log(id)
+  if( counter === 0 ){
+    document.getElementById(id).style.backgroundImage = 'url("../img/x.png")';
+    counter++;    
+  }else if(counter === 1){
+    document.getElementById(id).style.backgroundImage = 'url("../img/o.png")';
+    counter--;
+  }
+}
 
 function reset() {
 

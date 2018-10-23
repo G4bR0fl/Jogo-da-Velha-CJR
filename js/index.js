@@ -42,18 +42,63 @@ document.getElementById("c3").addEventListener("click",  () => {
 //--------------------FUNCTIONS--------------------//
 
 var counter = 0;
+
 //This function 
 function putElement(id){
 
   console.log(id)
   if( counter === 0 ){
     document.getElementById(id).style.backgroundImage = 'url("../img/x.png")';
-    counter++;    
+    switch(id){
+      case 'a1': game_matrix[0][0] = 'X';
+      break;
+      case 'a2': game_matrix[0][1] = 'X';
+      break;
+      case 'a3': game_matrix[0][2] = 'X';
+      break;
+      case 'b1': game_matrix[1][0] = 'X';
+      break;
+      case 'b2': game_matrix[1][1] = 'X';
+      break;
+      case 'b3': game_matrix[1][2] = 'X';
+      break;
+      case 'c1': game_matrix[2][0] = 'X';
+      break;
+      case 'c2': game_matrix[2][1] = 'X';
+      break;
+      case 'c3': game_matrix[2][2] = 'X';
+      break;
+    }
+   
+    counter++; 
+
   }else if(counter === 1){
     document.getElementById(id).style.backgroundImage = 'url("../img/o.png")';
+      switch(id){
+      case 'a1': game_matrix[0][0] = 'O';
+      break;
+      case 'a2': game_matrix[0][1] = 'O';
+      break;
+      case 'a3': game_matrix[0][2] = 'O';
+      break;
+      case 'b1': game_matrix[1][0] = 'O';
+      break;
+      case 'b2': game_matrix[1][1] = 'O';
+      break
+      case 'b3': game_matrix[1][2] = 'O';
+      break;
+      case 'c1': game_matrix[2][0] = 'O';
+      break;
+      case 'c2': game_matrix[2][1] = 'O';
+      break;
+      case 'c3': game_matrix[2][2] = 'O';
+      break;
+    }
+   
     counter--;
   }
 }
+  console.log(game_matrix);
 
 function reset() {
 

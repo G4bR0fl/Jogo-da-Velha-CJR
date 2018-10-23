@@ -148,8 +148,19 @@ function putElement(id){
   }
 }
 function reset() {
-  // Reset all game_matrix itens to null
-  game_matrix = game_matrix.map( vet => vet.map( item => null ) );
+   // reseting the matrix
+   game_matrix = game_matrix.map( vet => vet.map( item  => null) );
+
+   // reseting images
+   document.getElementById("a1").style.backgroundImage = null;
+   document.getElementById("a2").style.backgroundImage = null;
+   document.getElementById("a3").style.backgroundImage = null;
+   document.getElementById("b1").style.backgroundImage = null;
+   document.getElementById("b2").style.backgroundImage = null;
+   document.getElementById("b3").style.backgroundImage = null;
+   document.getElementById("c1").style.backgroundImage = null;
+   document.getElementById("c2").style.backgroundImage = null;
+   document.getElementById("c3").style.backgroundImage = null;
 
 }
 

@@ -9,32 +9,35 @@ let game_matrix = [[null, null, null],
 //--------------------LISTENERS--------------------//
 
 document.getElementById("btn_reset").addEventListener("click", reset);
-document.getElementById("a1").addEventListener("click", () => {
-  putElement("a1");
+
+// 'element' is a argument that retrieves the id of the target click
+document.getElementById("a1").addEventListener("click", (element) => {
+  putElement(element.target.id); // this calls the function putElement with
+                                 // "a1" as argument
 });
-document.getElementById("a2").addEventListener("click", () => {
-  putElement("a2");
+document.getElementById("a2").addEventListener("click", (element) => {
+  putElement(element.target.id);
 });
-document.getElementById("a3").addEventListener("click", () => {
-  putElement("a3");
+document.getElementById("a3").addEventListener("click", (element) => {
+  putElement(element.target.id);
 });
-document.getElementById("b1").addEventListener("click", () => {
-  putElement("b1");
+document.getElementById("b1").addEventListener("click", (element) => {
+  putElement(element.target.id);
   });
-document.getElementById("b2").addEventListener("click", () => {
-  putElement("b2");
+document.getElementById("b2").addEventListener("click", (element) => {
+  putElement(element.target.id);
   });
-document.getElementById("b3").addEventListener("click", () => {
-  putElement("b3");
+document.getElementById("b3").addEventListener("click", (element) => {
+  putElement(element.target.id);
   });
-document.getElementById("c1").addEventListener("click", () => {
-  putElement("c1");
+document.getElementById("c1").addEventListener("click", (element) => {
+  putElement(element.target.id);
   });
-document.getElementById("c2").addEventListener("click",  () => {
-  putElement("c2");
+document.getElementById("c2").addEventListener("click",  (element) => {
+  putElement(element.target.id);
   });
-document.getElementById("c3").addEventListener("click",  () => {
-  putElement("c3");
+document.getElementById("c3").addEventListener("click",  (element) => {
+  putElement(element.target.id);
   });
 
 //------------------END_LISTENERS------------------//
@@ -98,7 +101,6 @@ function putElement(id){
     counter--;
   }
 }
-  console.log(game_matrix);
 
 function reset() {
 

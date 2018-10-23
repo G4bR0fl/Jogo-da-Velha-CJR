@@ -1,5 +1,6 @@
 //--------------------VARIABLES--------------------//
 
+// Initializing the matrix with null elements.
 let game_matrix = [[null, null, null],
 [null, null, null],
 [null, null, null]];
@@ -8,7 +9,10 @@ let game_matrix = [[null, null, null],
 //
 //--------------------LISTENERS--------------------//
 
+// This event listener adds the functionality to the reset button.
 document.getElementById("btn_reset").addEventListener("click", reset);
+
+// In each event listener following by, it adds the element on the square which was clicked.
 document.getElementById("a1").addEventListener("click", () => {
   putElement("a1");
 });
@@ -41,9 +45,9 @@ document.getElementById("c3").addEventListener("click",  () => {
 
 //--------------------FUNCTIONS--------------------//
 
-var counter = 0;
+let counter = 0;
 
-//This function 
+//This function insert the element on the square selected.
 function putElement(id){
 
   console.log(id)

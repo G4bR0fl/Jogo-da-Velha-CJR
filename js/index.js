@@ -1,8 +1,9 @@
 //--------------------VARIABLES--------------------//
 
 let game_matrix = [[null, null, null],
-[null, null, null],
-[null, null, null]];
+                  [null, null, null],
+                  [null, null, null]];
+
 
 //------------------END_VARIABLES------------------//
 //
@@ -10,7 +11,43 @@ let game_matrix = [[null, null, null],
 
 document.getElementById("btn_reset").addEventListener("click", reset);
 document.getElementById("a1").addEventListener("click", () => {
+  putElement("a1");document.getElementById("btn_reset").addEventListener("click", reset);
+document.getElementById("a1").addEventListener("click", () => {
   putElement("a1");
+  is_game_finished(game_matrix);
+});
+document.getElementById("a2").addEventListener("click", () => {
+  putElement("a2");
+  is_game_finished(game_matrix);
+});
+document.getElementById("a3").addEventListener("click", () => {
+  putElement("a3");
+  is_game_finished(game_matrix);
+});
+document.getElementById("b1").addEventListener("click", () => {
+  putElement("b1");
+  is_game_finished(game_matrix);
+  });
+document.getElementById("b2").addEventListener("click", () => {
+  putElement("b2");
+  is_game_finished(game_matrix);
+  });
+document.getElementById("b3").addEventListener("click", () => {
+  putElement("b3");
+  is_game_finished(game_matrix);
+  });
+document.getElementById("c1").addEventListener("click", () => {
+  putElement("c1");
+  is_game_finished(game_matrix);
+  });
+document.getElementById("c2").addEventListener("click",  () => {
+  putElement("c2");
+  is_game_finished(game_matrix);
+  });
+document.getElementById("c3").addEventListener("click",  () => {
+  putElement("c3");
+  is_game_finished(game_matrix);
+  });
 });
 document.getElementById("a2").addEventListener("click", () => {
   putElement("a2");
@@ -124,6 +161,7 @@ function reset() {
    document.getElementById("c1").style.backgroundImage = null;
    document.getElementById("c2").style.backgroundImage = null;
    document.getElementById("c3").style.backgroundImage = null;
+
 }
 
 // Compiling
@@ -227,4 +265,3 @@ function is_game_finished(game_matrix) {
 }
 
 //------------------END_FUNCTIONS------------------//
-

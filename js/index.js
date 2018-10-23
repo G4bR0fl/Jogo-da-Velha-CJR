@@ -6,15 +6,147 @@ let game_matrix = [[null, null, null],
 
 
 //------------------END_VARIABLES------------------//
-
+//
 //--------------------LISTENERS--------------------//
 
 document.getElementById("btn_reset").addEventListener("click", reset);
+document.getElementById("a1").addEventListener("click", () => {
+  putElement("a1");document.getElementById("btn_reset").addEventListener("click", reset);
+document.getElementById("a1").addEventListener("click", () => {
+  putElement("a1");
+  is_game_finished(game_matrix);
+});
+document.getElementById("a2").addEventListener("click", () => {
+  putElement("a2");
+  is_game_finished(game_matrix);
+});
+document.getElementById("a3").addEventListener("click", () => {
+  putElement("a3");
+  is_game_finished(game_matrix);
+});
+document.getElementById("b1").addEventListener("click", () => {
+  putElement("b1");
+  is_game_finished(game_matrix);
+  });
+document.getElementById("b2").addEventListener("click", () => {
+  putElement("b2");
+  is_game_finished(game_matrix);
+  });
+document.getElementById("b3").addEventListener("click", () => {
+  putElement("b3");
+  is_game_finished(game_matrix);
+  });
+document.getElementById("c1").addEventListener("click", () => {
+  putElement("c1");
+  is_game_finished(game_matrix);
+  });
+document.getElementById("c2").addEventListener("click",  () => {
+  putElement("c2");
+  is_game_finished(game_matrix);
+  });
+document.getElementById("c3").addEventListener("click",  () => {
+  putElement("c3");
+  is_game_finished(game_matrix);
+  });
+});
+document.getElementById("a2").addEventListener("click", () => {
+  putElement("a2");
+});
+document.getElementById("a3").addEventListener("click", () => {
+  putElement("a3");
+});
+document.getElementById("b1").addEventListener("click", () => {
+  putElement("b1");
+  });
+document.getElementById("b2").addEventListener("click", () => {
+  putElement("b2");
+  });
+document.getElementById("b3").addEventListener("click", () => {
+  putElement("b3");
+  });
+document.getElementById("c1").addEventListener("click", () => {
+  putElement("c1");
+  });
+document.getElementById("c2").addEventListener("click",  () => {
+  putElement("c2");
+  });
+document.getElementById("c3").addEventListener("click",  () => {
+  putElement("c3");
+  });
 
 //------------------END_LISTENERS------------------//
 
 //--------------------FUNCTIONS--------------------//
 
+var counter = 0;
+
+//This function 
+function putElement(id){
+  console.log(id)
+
+  // testing if its already marked for no more markings 
+  if ( id == 'a1' && game_matrix[0][0] === null 
+  || id == 'a2' && game_matrix[0][1] === null 
+  || id == 'a3' && game_matrix[0][2] === null 
+  || id == 'b1' && game_matrix[1][0] === null 
+  || id == 'b2' && game_matrix[1][1] === null 
+  || id == 'b3' && game_matrix[1][2] === null 
+  || id == 'c1' && game_matrix[2][0] === null 
+  || id == 'c2' && game_matrix[2][1] === null 
+  || id == 'c3' && game_matrix[2][2] === null) {
+
+    if( counter === 0 ){
+      document.getElementById(id).style.backgroundImage = 'url("../img/x.png")';
+      switch(id){
+        case 'a1': game_matrix[0][0] = 'X';
+        break;
+        case 'a2': game_matrix[0][1] = 'X';
+        break;
+        case 'a3': game_matrix[0][2] = 'X';
+        break;
+        case 'b1': game_matrix[1][0] = 'X';
+        break;
+        case 'b2': game_matrix[1][1] = 'X';
+        break;
+        case 'b3': game_matrix[1][2] = 'X';
+        break;
+        case 'c1': game_matrix[2][0] = 'X';
+        break;
+        case 'c2': game_matrix[2][1] = 'X';
+        break;
+        case 'c3': game_matrix[2][2] = 'X';
+        break;
+      }
+    
+      counter++; 
+
+    }else if(counter === 1){
+      document.getElementById(id).style.backgroundImage = 'url("../img/o.png")';
+        switch(id){
+        case 'a1': game_matrix[0][0] = 'O';
+        break;
+        case 'a2': game_matrix[0][1] = 'O';
+        break;
+        case 'a3': game_matrix[0][2] = 'O';
+        break;
+        case 'b1': game_matrix[1][0] = 'O';
+        break;
+        case 'b2': game_matrix[1][1] = 'O';
+        break
+        case 'b3': game_matrix[1][2] = 'O';
+        break;
+        case 'c1': game_matrix[2][0] = 'O';
+        break;
+        case 'c2': game_matrix[2][1] = 'O';
+        break;
+        case 'c3': game_matrix[2][2] = 'O';
+        break;
+      }
+    
+      counter--;
+    }
+  }
+}
 function reset() {
   // Reset all game_matrix itens to null
   game_matrix = game_matrix.map( vet => vet.map( item => null ) );

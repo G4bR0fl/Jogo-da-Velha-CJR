@@ -1,8 +1,8 @@
 //--------------------VARIABLES--------------------//
 
 let game_matrix = [[null, null, null],
-                  [null, null, null],
-                  [null, null, null]];
+                   [null, null, null],
+                   [null, null, null]];
 
 
 //------------------END_VARIABLES------------------//
@@ -11,10 +11,10 @@ let game_matrix = [[null, null, null],
 
 document.getElementById("btn_reset").addEventListener("click", reset);
 
-let i; // Counter for adding event listeners for all game boxes
-for (i = 0; i < 9; i++) {
-  document.getElementsByClassName("game_box")[i].addEventListener("click", (element) => {
-    putElement(element.target.id);
+let p; // Counter for adding event listeners for all game boxes
+for (p = 0; p < 9; p++) {
+  document.getElementsByClassName("game_box")[p].addEventListener("click", (element) => {
+    putElement(element.target.id, p);
     is_finished = is_game_finished(game_matrix);
   }); 
 }
@@ -26,71 +26,42 @@ for (i = 0; i < 9; i++) {
 let counter = 0;
 
 //This function 
-function putElement(id){
+function putElement(id, position){
+  console.log("entered putElement with id: " + id + " and position: " + position);
+
+  // current background image of element with 'id'
+  let img = document.getElementById(id).style.backgroundImage;
 
   // testing if its already marked for no more markings 
-  if ( id == 'a1' && game_matrix[0][0] === null 
-  || id == 'a2' && game_matrix[0][1] === null 
-  || id == 'a3' && game_matrix[0][2] === null 
-  || id == 'b1' && game_matrix[1][0] === null 
-  || id == 'b2' && game_matrix[1][1] === null 
-  || id == 'b3' && game_matrix[1][2] === null 
-  || id == 'c1' && game_matrix[2][0] === null 
-  || id == 'c2' && game_matrix[2][1] === null 
-  || id == 'c3' && game_matrix[2][2] === null) {
-
-    if( counter === 0 ){
-      document.getElementById(id).style.backgroundImage = 'url("../img/x.png")';
-      switch(id){
-        case 'a1': game_matrix[0][0] = 'X';
-        break;
-        case 'a2': game_matrix[0][1] = 'X';
-        break;
-        case 'a3': game_matrix[0][2] = 'X';
-        break;
-        case 'b1': game_matrix[1][0] = 'X';
-        break;
-        case 'b2': game_matrix[1][1] = 'X';
-        break;
-        case 'b3': game_matrix[1][2] = 'X';
-        break;
-        case 'c1': game_matrix[2][0] = 'X';
-        break;
-        case 'c2': game_matrix[2][1] = 'X';
-        break;
-        case 'c3': game_matrix[2][2] = 'X';
-        break;
-      }
+  if ( img == null ) {
+    // var for the current value to be inserted in the game_matrix
+    let current_char = null;
     
+    if( counter === 0 ){
+      img = 'url("../img/x.png")'; //x
+      current_char = 'X';
       counter++; 
 
     }else if(counter === 1){
-      document.getElementById(id).style.backgroundImage = 'url("../img/o.png")';
-        switch(id){
-        case 'a1': game_matrix[0][0] = 'O';
-        break;
-        case 'a2': game_matrix[0][1] = 'O';
-        break;
-        case 'a3': game_matrix[0][2] = 'O';
-        break;
-        case 'b1': game_matrix[1][0] = 'O';
-        break;
-        case 'b2': game_matrix[1][1] = 'O';
-        break
-        case 'b3': game_matrix[1][2] = 'O';
-        break;
-        case 'c1': game_matrix[2][0] = 'O';
-        break;
-        case 'c2': game_matrix[2][1] = 'O';
-        break;
-        case 'c3': game_matrix[2][2] = 'O';
-        break;
-      }
-    
+      img = 'url("../img/o.png")'; //o
+      current_char = 'X';
+      current_char = 'O';      
       counter--;
+    }
+
+    let i, j, k = 0, achou = false;
+    for (i = 0; i < 3 || !achou; i++) {
+      for (j = 0; j < 3 || !achou; j++) {                  
+        if (position = i + j + k) {
+          game_matrix[i][j] = current_char;
+          achou = true;
+        }
+      }
+      k += 2;
     }
   }
 }
+
 function reset() {
    // reseting the matrix
    game_matrix = game_matrix.map( vet => vet.map( item  => null) );

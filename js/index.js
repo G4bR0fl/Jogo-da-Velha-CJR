@@ -11,44 +11,13 @@ let game_matrix = [[null, null, null],
 
 document.getElementById("btn_reset").addEventListener("click", reset);
 
-
-document.getElementById("a1").addEventListener("click", () => {
-  putElement("a1");
-  is_game_finished(game_matrix);
-});
-document.getElementById("a2").addEventListener("click", () => {
-  putElement("a2");
-  is_game_finished(game_matrix);
-});
-document.getElementById("a3").addEventListener("click", () => {
-  putElement("a3");
-  is_game_finished(game_matrix);
-});
-document.getElementById("b1").addEventListener("click", () => {
-  putElement("b1");
-  is_game_finished(game_matrix);
-});
-document.getElementById("b2").addEventListener("click", () => {
-  putElement("b2");
-  is_game_finished(game_matrix);
-});
-document.getElementById("b3").addEventListener("click", () => {
-  putElement("b3");
-  is_game_finished(game_matrix);
-});
-document.getElementById("c1").addEventListener("click", () => {
-  putElement("c1");
-  is_game_finished(game_matrix);
-});
-document.getElementById("c2").addEventListener("click",  () => {
-  putElement("c2");
-  is_game_finished(game_matrix);
-});
-document.getElementById("c3").addEventListener("click",  () => {
-  putElement("c3");
-  is_game_finished(game_matrix);
-});
-
+let i; // Counter for adding event listeners for all game boxes
+for (i = 0; i < 9; i++) {
+  document.getElementsByClassName("game_box")[i].addEventListener("click", (element) => {
+    putElement(element.target.id);
+    is_finished = is_game_finished(game_matrix);
+  }); 
+}
 
 //------------------END_LISTENERS------------------//
 

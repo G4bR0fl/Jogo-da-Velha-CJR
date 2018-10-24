@@ -60,6 +60,7 @@ function putElement(id, position){
       counter--;
     }
 
+    // Finding the correct position of the matrix to put the current_char
     let i, j, k = 0, achou = false;
     for (i = 0; i < 3 || !achou; i++) {
       for (j = 0; j < 3 || !achou; j++) {                  
@@ -68,29 +69,21 @@ function putElement(id, position){
           achou = true;
         }
       }
-      k += 2;
+      k += 2; // responsible for traversing the game_matrix as a vector
     }
   }
 }
 
 function reset() {
-   // reseting the matrix
-   game_matrix = game_matrix.map( vet => vet.map( item  => null) );
+  // reseting the matrix
+  game_matrix = game_matrix.map( vet => vet.map( item  => null) );
 
-   // reseting counter for always starting with X 
-   counter = 0;
+  // reseting counter for always starting with X 
+  counter = 0;
 
-   // reseting images
-   document.getElementById("a1").style.backgroundImage = null;
-   document.getElementById("a2").style.backgroundImage = null;
-   document.getElementById("a3").style.backgroundImage = null;
-   document.getElementById("b1").style.backgroundImage = null;
-   document.getElementById("b2").style.backgroundImage = null;
-   document.getElementById("b3").style.backgroundImage = null;
-   document.getElementById("c1").style.backgroundImage = null;
-   document.getElementById("c2").style.backgroundImage = null;
-   document.getElementById("c3").style.backgroundImage = null;
-
+  // reseting images
+  for (p = 0; p < 9; p++) 
+    document.getElementsByClassName("game_box")[p].style.backgroundImage = null;
 }
 
 // Compiling

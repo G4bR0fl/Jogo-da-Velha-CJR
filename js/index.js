@@ -17,6 +17,9 @@ let id_position = {
   'c3': 8
 }
 
+// tests if game is finished or not
+let is_finished = false;
+
 //------------------END_VARIABLES------------------//
 //
 //--------------------LISTENERS--------------------//
@@ -26,9 +29,11 @@ document.getElementById("btn_reset").addEventListener("click", reset);
 // loop for adding event listeners for all game boxes
 for (p = 0; p < 9; p++) {
   document.getElementsByClassName("game_box")[p].addEventListener("click", (element) => {
-    id = element.target.id;
-    putElement(id, id_position[id]);
-    is_game_finished(game_matrix);
+    if (!is_finished) {
+      id = element.target.id;
+      putElement(id, id_position[id]);
+      is_finished = is_game_finished(game_matrix);
+    }
   }); 
 }
 
@@ -81,6 +86,9 @@ function reset() {
   // reseting counter for always starting with X 
   counter = 0;
 
+  // reseting is_finished
+  is_finished = false;
+
   // reseting images
   for (p = 0; p < 9; p++) 
     document.getElementsByClassName("game_box")[p].style.backgroundImage = null;
@@ -92,7 +100,6 @@ function is_game_finished(game_matrix) {
   let check_win_X = [false, false, false];
   let check_win_O = [false, false, false];
   let counter = 0;
-  let game_result = false;
   let return_variables = [];
   // Checking Rows 
   for (let i = 0; i < 3; i++) {
@@ -103,7 +110,7 @@ function is_game_finished(game_matrix) {
         counter++;
         if (check_win_O[0] == true && check_win_O[1] == true && check_win_O[2] == true) {
           alert("O has won");
-          return game_result = true;
+          return true; // game finished
         }
       }
       // In case matrix has 'X'
@@ -112,7 +119,7 @@ function is_game_finished(game_matrix) {
         counter++;
         if (check_win_X[0] == true && check_win_X[1] == true && check_win_X[2] == true) {
           alert("X has won");
-          return game_result = true;
+          return true; // game finished
         }
       }
     }
@@ -133,7 +140,7 @@ function is_game_finished(game_matrix) {
         counter++;
         if (check_win_O[0] == true && check_win_O[1] == true && check_win_O[2] == true) {
           alert("O has won");
-          return game_result = true;
+          return true; // game finished
         }
       }
       // In case matrix has 'X'
@@ -142,7 +149,7 @@ function is_game_finished(game_matrix) {
         counter++;
         if (check_win_X[0] == true && check_win_X[1] == true && check_win_X[2] == true) {
           alert("X has won");
-          return game_result = true;
+          return true; // game finished
         }
       }
     }
@@ -158,12 +165,12 @@ function is_game_finished(game_matrix) {
   if (game_matrix[0][0] == game_matrix[1][1] && game_matrix[0][0] == game_matrix[2][2]) {
     if (game_matrix[0][0] == 'X') {
       alert("X has won");
-      return game_result = true;
+      return true; // game finished
     }
     else {
       if (game_matrix[0][0] == 'O') {
         alert("O has won");
-        return game_result = true;
+        return true; // game finished
       }
     }
   }
@@ -171,19 +178,17 @@ function is_game_finished(game_matrix) {
     if (game_matrix[2][0] == game_matrix[1][1] && game_matrix[2][0] == game_matrix[0][2]) {
       if (game_matrix[2][0] == 'X') {
         alert("X has won");
-        return game_result = true;
+        return true; // game finished
       }
       else {
         if (game_matrix[2][0] == 'O') {
           alert("O has won");
-          return game_result = true;
+          return true; // game finished
         }
       }
     }
   }
-  return_variables[0] = game_result;
-  return_variables[1] = counter; // Counter passes 2 times in the matrix, that's why it goes 2 by 2.
-  return [game_result, counter / 2]; // So it's divided by 2.
+  return false; // game not finished
 }
 
 //------------------END_FUNCTIONS------------------//

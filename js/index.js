@@ -10,8 +10,8 @@ let game_matrix = [[null, null, null],
 //--------------------LISTENERS--------------------//
 
 document.getElementById("btn_reset").addEventListener("click", reset);
-document.getElementById("a1").addEventListener("click", () => {
-  putElement("a1");document.getElementById("btn_reset").addEventListener("click", reset);
+
+
 document.getElementById("a1").addEventListener("click", () => {
   putElement("a1");
   is_game_finished(game_matrix);
@@ -27,62 +27,37 @@ document.getElementById("a3").addEventListener("click", () => {
 document.getElementById("b1").addEventListener("click", () => {
   putElement("b1");
   is_game_finished(game_matrix);
-  });
+});
 document.getElementById("b2").addEventListener("click", () => {
   putElement("b2");
   is_game_finished(game_matrix);
-  });
+});
 document.getElementById("b3").addEventListener("click", () => {
   putElement("b3");
   is_game_finished(game_matrix);
-  });
+});
 document.getElementById("c1").addEventListener("click", () => {
   putElement("c1");
   is_game_finished(game_matrix);
-  });
+});
 document.getElementById("c2").addEventListener("click",  () => {
   putElement("c2");
   is_game_finished(game_matrix);
-  });
+});
 document.getElementById("c3").addEventListener("click",  () => {
   putElement("c3");
   is_game_finished(game_matrix);
-  });
 });
-document.getElementById("a2").addEventListener("click", () => {
-  putElement("a2");
-});
-document.getElementById("a3").addEventListener("click", () => {
-  putElement("a3");
-});
-document.getElementById("b1").addEventListener("click", () => {
-  putElement("b1");
-  });
-document.getElementById("b2").addEventListener("click", () => {
-  putElement("b2");
-  });
-document.getElementById("b3").addEventListener("click", () => {
-  putElement("b3");
-  });
-document.getElementById("c1").addEventListener("click", () => {
-  putElement("c1");
-  });
-document.getElementById("c2").addEventListener("click",  () => {
-  putElement("c2");
-  });
-document.getElementById("c3").addEventListener("click",  () => {
-  putElement("c3");
-  });
+
 
 //------------------END_LISTENERS------------------//
 
 //--------------------FUNCTIONS--------------------//
 
-var counter = 0;
+let counter = 0;
 
 //This function 
 function putElement(id){
-  console.log(id)
 
   // testing if its already marked for no more markings 
   if ( id == 'a1' && game_matrix[0][0] === null 
@@ -151,6 +126,9 @@ function reset() {
    // reseting the matrix
    game_matrix = game_matrix.map( vet => vet.map( item  => null) );
 
+   // reseting counter for always starting with X 
+   counter = 0;
+
    // reseting images
    document.getElementById("a1").style.backgroundImage = null;
    document.getElementById("a2").style.backgroundImage = null;
@@ -180,7 +158,7 @@ function is_game_finished(game_matrix) {
         check_win_O[j] = true;
         counter++;
         if (check_win_O[0] == true && check_win_O[1] == true && check_win_O[2] == true) {
-          console.log("O has won");
+          alert("O has won");
           return game_result = true;
         }
       }
@@ -189,7 +167,7 @@ function is_game_finished(game_matrix) {
         check_win_X[j] = true;
         counter++;
         if (check_win_X[0] == true && check_win_X[1] == true && check_win_X[2] == true) {
-          console.log("X has won");
+          alert("X has won");
           return game_result = true;
         }
       }
@@ -210,7 +188,7 @@ function is_game_finished(game_matrix) {
         check_win_O[i] = true;
         counter++;
         if (check_win_O[0] == true && check_win_O[1] == true && check_win_O[2] == true) {
-          console.log("O has won");
+          alert("O has won");
           return game_result = true;
         }
       }
@@ -219,7 +197,7 @@ function is_game_finished(game_matrix) {
         check_win_X[i] = true;
         counter++;
         if (check_win_X[0] == true && check_win_X[1] == true && check_win_X[2] == true) {
-          console.log("X has won");
+          alert("X has won");
           return game_result = true;
         }
       }
@@ -235,12 +213,12 @@ function is_game_finished(game_matrix) {
   // Checking diagonals
   if (game_matrix[0][0] == game_matrix[1][1] && game_matrix[0][0] == game_matrix[2][2]) {
     if (game_matrix[0][0] == 'X') {
-      console.log("X has won");
+      alert("X has won");
       return game_result = true;
     }
     else {
       if (game_matrix[0][0] == 'O') {
-        console.log("O has won");
+        alert("O has won");
         return game_result = true;
       }
     }
@@ -248,12 +226,12 @@ function is_game_finished(game_matrix) {
   else {
     if (game_matrix[2][0] == game_matrix[1][1] && game_matrix[2][0] == game_matrix[0][2]) {
       if (game_matrix[2][0] == 'X') {
-        console.log("X has won");
+        alert("X has won");
         return game_result = true;
       }
       else {
         if (game_matrix[2][0] == 'O') {
-          console.log("O has won");
+          alert("O has won");
           return game_result = true;
         }
       }

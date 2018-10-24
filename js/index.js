@@ -4,6 +4,18 @@ let game_matrix = [[null, null, null],
                    [null, null, null],
                    [null, null, null]];
 
+// obj for finding the correct position of an id in the matrix (seen as a vector)
+let id_position = {
+  'a1': 0,  
+  'a2': 1,
+  'a3': 2,
+  'b1': 3,
+  'b2': 4,
+  'b3': 5,
+  'c1': 6,
+  'c2': 7,
+  'c3': 8
+}
 
 //------------------END_VARIABLES------------------//
 //
@@ -11,11 +23,12 @@ let game_matrix = [[null, null, null],
 
 document.getElementById("btn_reset").addEventListener("click", reset);
 
-let p; // Counter for adding event listeners for all game boxes
+// loop for adding event listeners for all game boxes
 for (p = 0; p < 9; p++) {
   document.getElementsByClassName("game_box")[p].addEventListener("click", (element) => {
-    putElement(element.target.id, p);
-    is_finished = is_game_finished(game_matrix);
+    id = element.target.id;
+    putElement(id, id_position[id]);
+    is_game_finished(game_matrix);
   }); 
 }
 
@@ -27,24 +40,22 @@ let counter = 0;
 
 //This function 
 function putElement(id, position){
-  console.log("entered putElement with id: " + id + " and position: " + position);
 
   // current background image of element with 'id'
-  let img = document.getElementById(id).style.backgroundImage;
-
+  let element = document.getElementById(id);
+  
   // testing if its already marked for no more markings 
-  if ( img == null ) {
+  if ( element.style.backgroundImage == "" ) {
     // var for the current value to be inserted in the game_matrix
     let current_char = null;
     
     if( counter === 0 ){
-      img = 'url("../img/x.png")'; //x
+      element.style.backgroundImage = 'url("../img/x.png")'; //x
       current_char = 'X';
       counter++; 
 
     }else if(counter === 1){
-      img = 'url("../img/o.png")'; //o
-      current_char = 'X';
+      element.style.backgroundImage = 'url("../img/o.png")'; //o
       current_char = 'O';      
       counter--;
     }
@@ -52,7 +63,7 @@ function putElement(id, position){
     let i, j, k = 0, achou = false;
     for (i = 0; i < 3 || !achou; i++) {
       for (j = 0; j < 3 || !achou; j++) {                  
-        if (position = i + j + k) {
+        if (position == i + j + k) {
           game_matrix[i][j] = current_char;
           achou = true;
         }

@@ -1,167 +1,97 @@
 //--------------------VARIABLES--------------------//
 
 let game_matrix = [[null, null, null],
-                  [null, null, null],
-                  [null, null, null]];
+                   [null, null, null],
+                   [null, null, null]];
 
+// obj for finding the correct position of an id in the matrix (seen as a vector)
+let id_position = {
+  'a1': 0,  
+  'a2': 1,
+  'a3': 2,
+  'b1': 3,
+  'b2': 4,
+  'b3': 5,
+  'c1': 6,
+  'c2': 7,
+  'c3': 8
+}
+
+// tests if game is finished or not
+let is_finished = false;
 
 //------------------END_VARIABLES------------------//
 //
 //--------------------LISTENERS--------------------//
 
 document.getElementById("btn_reset").addEventListener("click", reset);
-document.getElementById("a1").addEventListener("click", () => {
-  putElement("a1");document.getElementById("btn_reset").addEventListener("click", reset);
-document.getElementById("a1").addEventListener("click", () => {
-  putElement("a1");
-  is_game_finished(game_matrix);
-});
-document.getElementById("a2").addEventListener("click", () => {
-  putElement("a2");
-  is_game_finished(game_matrix);
-});
-document.getElementById("a3").addEventListener("click", () => {
-  putElement("a3");
-  is_game_finished(game_matrix);
-});
-document.getElementById("b1").addEventListener("click", () => {
-  putElement("b1");
-  is_game_finished(game_matrix);
-  });
-document.getElementById("b2").addEventListener("click", () => {
-  putElement("b2");
-  is_game_finished(game_matrix);
-  });
-document.getElementById("b3").addEventListener("click", () => {
-  putElement("b3");
-  is_game_finished(game_matrix);
-  });
-document.getElementById("c1").addEventListener("click", () => {
-  putElement("c1");
-  is_game_finished(game_matrix);
-  });
-document.getElementById("c2").addEventListener("click",  () => {
-  putElement("c2");
-  is_game_finished(game_matrix);
-  });
-document.getElementById("c3").addEventListener("click",  () => {
-  putElement("c3");
-  is_game_finished(game_matrix);
-  });
-});
-document.getElementById("a2").addEventListener("click", () => {
-  putElement("a2");
-});
-document.getElementById("a3").addEventListener("click", () => {
-  putElement("a3");
-});
-document.getElementById("b1").addEventListener("click", () => {
-  putElement("b1");
-  });
-document.getElementById("b2").addEventListener("click", () => {
-  putElement("b2");
-  });
-document.getElementById("b3").addEventListener("click", () => {
-  putElement("b3");
-  });
-document.getElementById("c1").addEventListener("click", () => {
-  putElement("c1");
-  });
-document.getElementById("c2").addEventListener("click",  () => {
-  putElement("c2");
-  });
-document.getElementById("c3").addEventListener("click",  () => {
-  putElement("c3");
-  });
+
+// loop for adding event listeners for all game boxes
+for (p = 0; p < 9; p++) {
+  document.getElementsByClassName("game_box")[p].addEventListener("click", (element) => {
+    if (!is_finished) {
+      id = element.target.id;
+      putElement(id, id_position[id]);
+      is_finished = is_game_finished(game_matrix);
+    }
+  }); 
+}
 
 //------------------END_LISTENERS------------------//
 
 //--------------------FUNCTIONS--------------------//
 
-var counter = 0;
+let counter = 0;
 
 //This function 
-function putElement(id){
-  console.log(id)
+function putElement(id, position){
 
+  // current background image of element with 'id'
+  let element = document.getElementById(id);
+  
   // testing if its already marked for no more markings 
-  if ( id == 'a1' && game_matrix[0][0] === null 
-  || id == 'a2' && game_matrix[0][1] === null 
-  || id == 'a3' && game_matrix[0][2] === null 
-  || id == 'b1' && game_matrix[1][0] === null 
-  || id == 'b2' && game_matrix[1][1] === null 
-  || id == 'b3' && game_matrix[1][2] === null 
-  || id == 'c1' && game_matrix[2][0] === null 
-  || id == 'c2' && game_matrix[2][1] === null 
-  || id == 'c3' && game_matrix[2][2] === null) {
-
-    if( counter === 0 ){
-      document.getElementById(id).style.backgroundImage = 'url("../img/x.png")';
-      switch(id){
-        case 'a1': game_matrix[0][0] = 'X';
-        break;
-        case 'a2': game_matrix[0][1] = 'X';
-        break;
-        case 'a3': game_matrix[0][2] = 'X';
-        break;
-        case 'b1': game_matrix[1][0] = 'X';
-        break;
-        case 'b2': game_matrix[1][1] = 'X';
-        break;
-        case 'b3': game_matrix[1][2] = 'X';
-        break;
-        case 'c1': game_matrix[2][0] = 'X';
-        break;
-        case 'c2': game_matrix[2][1] = 'X';
-        break;
-        case 'c3': game_matrix[2][2] = 'X';
-        break;
-      }
+  if ( element.style.backgroundImage == "" ) {
+    // var for the current value to be inserted in the game_matrix
+    let current_char = null;
     
+    if( counter === 0 ){
+      element.style.backgroundImage = 'url("../img/x.png")'; //x
+      current_char = 'X';
       counter++; 
 
     }else if(counter === 1){
-      document.getElementById(id).style.backgroundImage = 'url("../img/o.png")';
-        switch(id){
-        case 'a1': game_matrix[0][0] = 'O';
-        break;
-        case 'a2': game_matrix[0][1] = 'O';
-        break;
-        case 'a3': game_matrix[0][2] = 'O';
-        break;
-        case 'b1': game_matrix[1][0] = 'O';
-        break;
-        case 'b2': game_matrix[1][1] = 'O';
-        break
-        case 'b3': game_matrix[1][2] = 'O';
-        break;
-        case 'c1': game_matrix[2][0] = 'O';
-        break;
-        case 'c2': game_matrix[2][1] = 'O';
-        break;
-        case 'c3': game_matrix[2][2] = 'O';
-        break;
-      }
-    
+      element.style.backgroundImage = 'url("../img/o.png")'; //o
+      current_char = 'O';      
       counter--;
+    }
+
+    // Finding the correct position of the matrix to put the current_char
+    let i, j, k = 0, achou = false;
+    for (i = 0; i < 3 || !achou; i++) {
+      for (j = 0; j < 3 || !achou; j++) {                  
+        if (position == i + j + k) {
+          game_matrix[i][j] = current_char;
+          achou = true;
+        }
+      }
+      k += 2; // responsible for traversing the game_matrix as a vector
     }
   }
 }
+
 function reset() {
-   // reseting the matrix
-   game_matrix = game_matrix.map( vet => vet.map( item  => null) );
+  // reseting the matrix
+  game_matrix = game_matrix.map( vet => vet.map( item  => null) );
 
-   // reseting images
-   document.getElementById("a1").style.backgroundImage = null;
-   document.getElementById("a2").style.backgroundImage = null;
-   document.getElementById("a3").style.backgroundImage = null;
-   document.getElementById("b1").style.backgroundImage = null;
-   document.getElementById("b2").style.backgroundImage = null;
-   document.getElementById("b3").style.backgroundImage = null;
-   document.getElementById("c1").style.backgroundImage = null;
-   document.getElementById("c2").style.backgroundImage = null;
-   document.getElementById("c3").style.backgroundImage = null;
+  // reseting counter for always starting with X 
+  counter = 0;
 
+  // reseting is_finished
+  is_finished = false;
+
+  // reseting images
+  for (p = 0; p < 9; p++) 
+    document.getElementsByClassName("game_box")[p].style.backgroundImage = null;
 }
 
 // Compiling
@@ -170,7 +100,6 @@ function is_game_finished(game_matrix) {
   let check_win_X = [false, false, false];
   let check_win_O = [false, false, false];
   let counter = 0;
-  let game_result = false;
   let return_variables = [];
   // Checking Rows 
   for (let i = 0; i < 3; i++) {
@@ -180,8 +109,8 @@ function is_game_finished(game_matrix) {
         check_win_O[j] = true;
         counter++;
         if (check_win_O[0] == true && check_win_O[1] == true && check_win_O[2] == true) {
-          console.log("O has won");
-          return game_result = true;
+          alert("O has won");
+          return true; // game finished
         }
       }
       // In case matrix has 'X'
@@ -189,8 +118,8 @@ function is_game_finished(game_matrix) {
         check_win_X[j] = true;
         counter++;
         if (check_win_X[0] == true && check_win_X[1] == true && check_win_X[2] == true) {
-          console.log("X has won");
-          return game_result = true;
+          alert("X has won");
+          return true; // game finished
         }
       }
     }
@@ -210,8 +139,8 @@ function is_game_finished(game_matrix) {
         check_win_O[i] = true;
         counter++;
         if (check_win_O[0] == true && check_win_O[1] == true && check_win_O[2] == true) {
-          console.log("O has won");
-          return game_result = true;
+          alert("O has won");
+          return true; // game finished
         }
       }
       // In case matrix has 'X'
@@ -219,8 +148,8 @@ function is_game_finished(game_matrix) {
         check_win_X[i] = true;
         counter++;
         if (check_win_X[0] == true && check_win_X[1] == true && check_win_X[2] == true) {
-          console.log("X has won");
-          return game_result = true;
+          alert("X has won");
+          return true; // game finished
         }
       }
     }
@@ -235,33 +164,31 @@ function is_game_finished(game_matrix) {
   // Checking diagonals
   if (game_matrix[0][0] == game_matrix[1][1] && game_matrix[0][0] == game_matrix[2][2]) {
     if (game_matrix[0][0] == 'X') {
-      console.log("X has won");
-      return game_result = true;
+      alert("X has won");
+      return true; // game finished
     }
     else {
       if (game_matrix[0][0] == 'O') {
-        console.log("O has won");
-        return game_result = true;
+        alert("O has won");
+        return true; // game finished
       }
     }
   }
   else {
     if (game_matrix[2][0] == game_matrix[1][1] && game_matrix[2][0] == game_matrix[0][2]) {
       if (game_matrix[2][0] == 'X') {
-        console.log("X has won");
-        return game_result = true;
+        alert("X has won");
+        return true; // game finished
       }
       else {
         if (game_matrix[2][0] == 'O') {
-          console.log("O has won");
-          return game_result = true;
+          alert("O has won");
+          return true; // game finished
         }
       }
     }
   }
-  return_variables[0] = game_result;
-  return_variables[1] = counter; // Counter passes 2 times in the matrix, that's why it goes 2 by 2.
-  return [game_result, counter / 2]; // So it's divided by 2.
+  return false; // game not finished
 }
 
 //------------------END_FUNCTIONS------------------//

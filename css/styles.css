@@ -1,40 +1,19 @@
-button {
-  margin-left: 5px;
+* {
+  box-sizing: border-box;
 }
 
-.wrapper{
-    width:100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-.center {
-    padding-top: 20px;
-    margin: auto;
-    width: 38%;
-    border: 1px solid red;
-}
-
-.btn_downside {
-  width: 50%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-right: 60px;
-  margin-top: 10px;
+.container {
+  width: 60%;
 }
 
 .btn_upside {
-  width: 38%;
-  padding-top: 40px;
-  margin: auto;
+  margin-top: 40px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-img{
+img {
     display: inline-block;
     padding: 0px;
     margin: 0px;
@@ -42,84 +21,10 @@ img{
     float:right;
 }
 
-#a1 {
-    height: 130px;
-    width: 130px;
-    border-bottom: solid 1px;
-    border-right: solid 1px;
-    display: inline-block;
-    margin: 0px;
-}
-
-#a2 {
-    height: 130px;
-    width: 130px;
-    border-bottom: solid 1px;
-    border-left: solid 1px;
-    border-right: solid 1px;
-    display: inline-block;
-    margin: 0px;
-}
-
-#a3 {
-    height: 130px;
-    width: 130px;
-    border-bottom: solid 1px;
-    border-left: solid 1px;
-    display: inline-block;
-    margin: 0px;
-}
-
-#b1 {
-    height: 130px;
-    width: 130px;
-    border-bottom: solid 1px;
-    border-right: solid 1px;
-    border-top: solid 1px;
-    display: inline-block;
-    margin: 0px;
-}
-
-#b2 {
-    height: 130px;
-    width: 130px;
+.game_box {
+    height: 143px;
+    width: 143px;
     border: solid 1px;
-    display: inline-block;
-    margin: 0px;
-}
-
-#b3 {
-    height: 130px;
-    width: 130px;
-    border-bottom: solid 1px;
-    border-left: solid 1px;
-    border-top: solid 1px;
-    display: inline-block;
-    margin: 0px;
-}
-
-#c1 {
-    height: 130px;
-    width: 130px;
-    border-top: solid 1px;
-    border-right: solid 1px;
-    display: inline-block;
-    margin: 0px;
-}
-#c2 {
-    height: 130px;
-    width: 130px;
-    border-top: solid 1px;
-    border-left: solid 1px;
-    border-right: solid 1px;
-    display: inline-block;
-    margin: 0px;
-}
-#c3 {
-    height: 130px;
-    width: 130px;
-    border-top: solid 1px;
-    border-left: solid 1px;
-    display: inline-block;
-    margin: 0px;
+    border-radius: 15px;
+    margin: .3em;
 }

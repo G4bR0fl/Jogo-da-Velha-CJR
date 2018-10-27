@@ -11,39 +11,47 @@
 
 <body>
 
-    <div class="container">
-      <div class="btn_upside">
-        <button id="btn_menu" type="button" class="btn btn-outline-info btn-lg">menu</button>
+    <div class="container d-flex flex-row">
 
-        <div class="">
-          <p>Aqui jaz funcionalidades futuras</p>
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="btn_upside">
+          <button id="btn_menu" type="button" class="btn btn-outline-info btn-lg">menu</button>
+
+          <div class="">
+
+          </div>
         </div>
-      </div>
         
-        <div class="mt-5">
-          <div class="row d-flex justify-content-center">
-            <div class="game_box" id="a1"></div>
-            <div class="game_box" id="a2"></div>
-            <div class="game_box" id="a3"></div>
-          </div>
-          <div class="row d-flex justify-content-center">
-            <div class="game_box" id="b1"></div>
-            <div class="game_box" id="b2"></div>
-            <div class="game_box" id="b3"></div>
-          </div>
-          <div class="row d-flex justify-content-center">
-            <div class="game_box" id="c1"></div>
-            <div class="game_box" id="c2"></div>
-            <div class="game_box" id="c3"></div>
-          </div>
-        </div>
-
-        <div class="row mx-auto mt-5">
+        <div class="row mx-auto">
           <button type="button" 
-                  class="btn_reset px-5 mx-auto btn btn-outline-info btn-lg" 
+                  class="btn_reset mx-auto btn btn-outline-info btn-lg" 
                   id="btn_reset" 
                   type="button">reset</button>
         </div>
+      </div>
+      <!-- End Sidebar -->
+
+      <!-- Game -->
+      <div class="game my-1">
+        <div class="row d-flex justify-content-center">
+          <div class="game_box" id="a1"></div>
+          <div class="game_box" id="a2"></div>
+          <div class="game_box" id="a3"></div>
+        </div>
+        <div class="row d-flex justify-content-center">
+          <div class="game_box" id="b1"></div>
+          <div class="game_box" id="b2"></div>
+          <div class="game_box" id="b3"></div>
+        </div>
+        <div class="row d-flex justify-content-center">
+          <div class="game_box" id="c1"></div>
+          <div class="game_box" id="c2"></div>
+          <div class="game_box" id="c3"></div>
+        </div>
+      </div>
+      <!-- End Game -->
+
     </div>
 
 

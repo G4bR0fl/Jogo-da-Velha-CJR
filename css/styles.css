@@ -14,11 +14,8 @@
 }
 
 img {
-    display: inline-block;
-    padding: 0px;
+    padding: 0px  ;
     margin: 0px;
-
-    float:right;
 }
 
 .game_box {
@@ -27,4 +24,11 @@ img {
     border: solid 1px;
     border-radius: 15px;
     margin: .3em;
+}
+
+#X {
+  border-radius: 50%;
+}
+#O {
+  border-radius: 50%;
 }

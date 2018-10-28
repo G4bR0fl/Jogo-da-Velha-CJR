@@ -2,8 +2,8 @@
   box-sizing: border-box;
 }
 
-.container {
-  width: 60%;
+.sidebar {
+  width: 20%;
 }
 
 .btn_upside {
@@ -19,11 +19,11 @@ img {
 }
 
 .game_box {
-    height: 143px;
-    width: 143px;
-    border: solid 1px;
-    border-radius: 15px;
-    margin: .3em;
+  height: 143px;
+  width: 143px;
+  border: solid 1px;
+  border-radius: 15px;
+  margin: .3em;
 }
 
 #X {

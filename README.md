@@ -31,4 +31,8 @@
 + Download and extract the .Zip into any folder of your choice.
 + After that, where you extracted the files, search for the folder 'html' and open the 'index.html' file on Google Chrome
 
-      
+
+##### Contributors: 
+* [Gabriel Bessa](https://github.com/GabrielBessa)
+* [Gustavo Luigi](https://github.com/GutoLusilo)
+* [Fernanda Macedo](https://github.com/fernandams)

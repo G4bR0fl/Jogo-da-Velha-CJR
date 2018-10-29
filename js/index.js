@@ -1,8 +1,11 @@
 //--------------------VARIABLES--------------------//
 
 let game_matrix = [[null, null, null],
-                   [null, null, null],
-                   [null, null, null]];
+[null, null, null],
+[null, null, null]];
+
+// Counter for victories, witch starts in zero
+let x_vitorias = 0, o_vitorias = 0;
 
 // obj for finding the correct position of an id in the matrix (seen as a vector)
 let id_position = {
@@ -20,9 +23,15 @@ let id_position = {
 // tests if game is finished or not
 let is_finished = false;
 
+// Tells whitch turn it is: 0 for X`s and 1 for O`s
+let counter = 0;
+
 //------------------END_VARIABLES------------------//
 //
 //--------------------LISTENERS--------------------//
+
+// Turns starts with X
+document.getElementById("X").style.backgroundColor = "lightblue";
 
 document.getElementById("btn_reset").addEventListener("click", reset);
 
@@ -33,6 +42,28 @@ for (p = 0; p < 9; p++) {
       id = element.target.id;
       putElement(id, id_position[id]);
       is_finished = is_game_finished(game_matrix);
+      
+      // Showing how many victories each one has
+      if (is_finished == 1) { // X wins
+        alert("X has won");
+        x_vitorias++;
+        document.getElementById("x_vitorias").innerHTML = x_vitorias;
+      }
+      else if (is_finished == 2) { // O wins
+        alert("O has won");
+        o_vitorias++;
+        document.getElementById("o_vitorias").innerHTML = o_vitorias;
+      }
+
+      // Coloring according to the turn
+      if (counter) {
+        document.getElementById("X").style.backgroundColor = "";
+        document.getElementById("O").style.backgroundColor = "lightblue";
+      }
+      else {
+        document.getElementById("X").style.backgroundColor = "lightblue";
+        document.getElementById("O").style.backgroundColor = "";        
+      }
     }
   }); 
 }
@@ -41,7 +72,6 @@ for (p = 0; p < 9; p++) {
 
 //--------------------FUNCTIONS--------------------//
 
-let counter = 0;
 
 //This function 
 function putElement(id, position){
@@ -86,6 +116,10 @@ function reset() {
   // reseting counter for always starting with X 
   counter = 0;
 
+  // reseting turns 
+  document.getElementById("X").style.backgroundColor = "lightblue";
+  document.getElementById("O").style.backgroundColor = "";
+
   // reseting is_finished
   is_finished = false;
 
@@ -109,8 +143,7 @@ function is_game_finished(game_matrix) {
         check_win_O[j] = true;
         counter++;
         if (check_win_O[0] == true && check_win_O[1] == true && check_win_O[2] == true) {
-          alert("O has won");
-          return true; // game finished
+          return 2; // game finished and O won
         }
       }
       // In case matrix has 'X'
@@ -118,8 +151,7 @@ function is_game_finished(game_matrix) {
         check_win_X[j] = true;
         counter++;
         if (check_win_X[0] == true && check_win_X[1] == true && check_win_X[2] == true) {
-          alert("X has won");
-          return true; // game finished
+          return 1; // game finished and X won
         }
       }
     }
@@ -139,8 +171,7 @@ function is_game_finished(game_matrix) {
         check_win_O[i] = true;
         counter++;
         if (check_win_O[0] == true && check_win_O[1] == true && check_win_O[2] == true) {
-          alert("O has won");
-          return true; // game finished
+          return 2; // game finished and O won
         }
       }
       // In case matrix has 'X'
@@ -148,8 +179,7 @@ function is_game_finished(game_matrix) {
         check_win_X[i] = true;
         counter++;
         if (check_win_X[0] == true && check_win_X[1] == true && check_win_X[2] == true) {
-          alert("X has won");
-          return true; // game finished
+          return 1; // game finished and X won
         }
       }
     }
@@ -164,31 +194,27 @@ function is_game_finished(game_matrix) {
   // Checking diagonals
   if (game_matrix[0][0] == game_matrix[1][1] && game_matrix[0][0] == game_matrix[2][2]) {
     if (game_matrix[0][0] == 'X') {
-      alert("X has won");
-      return true; // game finished
+      return 1; // game finished and X won
     }
     else {
       if (game_matrix[0][0] == 'O') {
-        alert("O has won");
-        return true; // game finished
+        return 2; // game finished and O won
       }
     }
   }
   else {
     if (game_matrix[2][0] == game_matrix[1][1] && game_matrix[2][0] == game_matrix[0][2]) {
       if (game_matrix[2][0] == 'X') {
-        alert("X has won");
-        return true; // game finished
+        return 1; // game finished and X won
       }
       else {
         if (game_matrix[2][0] == 'O') {
-          alert("O has won");
-          return true; // game finished
+          return 2; // game finished and O won
         }
       }
     }
   }
-  return false; // game not finished
+  return 0; // game not finished
 }
 
 //------------------END_FUNCTIONS------------------//

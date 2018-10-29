@@ -5,33 +5,47 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/styles.css">
 
-
-
     <meta charset="utf-8">
-    <title></title>
+    <title>Jogo da Velha</title>
 </head>
 
 <body>
 
-    <div class="wrapper">
+    <div class="container">
+      <div class="btn_upside">
+        <button id="btn_menu" type="button" class="px-5 btn btn-primary btn-lg">menu</button>
 
-
-        <div class="center">
+        <div class="my-auto">
+          <span><span id="x_vitorias">0</span> vitórias << <span id="X" class="p-2">X</span></span>
+          <span>| <span id="O" class="p-2">O</span> >> <span id="o_vitorias">0</span> vitórias</span>          
+        </div>
+      </div>
+        
+        <div class="mt-5">
+          <div class="row d-flex justify-content-center">
             <div class="game_box" id="a1"></div>
             <div class="game_box" id="a2"></div>
             <div class="game_box" id="a3"></div>
-            <br>
+          </div>
+          <div class="row d-flex justify-content-center">
             <div class="game_box" id="b1"></div>
             <div class="game_box" id="b2"></div>
             <div class="game_box" id="b3"></div>
-            <br>
+          </div>
+          <div class="row d-flex justify-content-center">
             <div class="game_box" id="c1"></div>
             <div class="game_box" id="c2"></div>
             <div class="game_box" id="c3"></div>
+          </div>
         </div>
-
-        <button id="btn_reset" type="button">reset</button>
-    
+        
+        <div class="row mx-auto">
+          <button type="button" 
+                  class="px-5 mx-auto mt-5 btn btn-secondary btn-lg" 
+                  id="btn_reset" 
+                  type="button">reset</button>
+        </div>
+      </div>
     </div>
 
 

@@ -33,6 +33,7 @@ let counter = 0;
 // Turns starts with X
 document.getElementById("X").style.backgroundColor = "lightblue";
 
+// Button which gets a clicking command to reset the game
 document.getElementById("btn_reset").addEventListener("click", reset);
 
 // loop for adding event listeners for all game boxes
@@ -73,7 +74,7 @@ for (p = 0; p < 9; p++) {
 //--------------------FUNCTIONS--------------------//
 
 
-//This function 
+//This function put each element depending on whose turn it is, on the respective square selected.
 function putElement(id, position){
 
   // current background image of element with 'id'
@@ -109,6 +110,7 @@ function putElement(id, position){
   }
 }
 
+// This function resets the game
 function reset() {
   // reseting the matrix
   game_matrix = game_matrix.map( vet => vet.map( item  => null) );
@@ -128,13 +130,13 @@ function reset() {
     document.getElementsByClassName("game_box")[p].style.backgroundImage = null;
 }
 
-// Compiling
-// This function checks if the game has finished or not
+// This function checks if the game has finished or not.
 function is_game_finished(game_matrix) {
   let check_win_X = [false, false, false];
   let check_win_O = [false, false, false];
   let counter = 0;
-  let return_variables = [];
+  let draw_counter = 0;
+  let draw_checker = true;
   // Checking Rows 
   for (let i = 0; i < 3; i++) {
     for (let j = 0; j < 3; j++) {
@@ -142,16 +144,20 @@ function is_game_finished(game_matrix) {
       if (game_matrix[i][j] == 'O') {
         check_win_O[j] = true;
         counter++;
+        draw_counter++;
         if (check_win_O[0] == true && check_win_O[1] == true && check_win_O[2] == true) {
           return 2; // game finished and O won
+          draw_checker = false;
         }
       }
       // In case matrix has 'X'
       if (game_matrix[i][j] == 'X') {
         check_win_X[j] = true;
         counter++;
+        draw_counter++;
         if (check_win_X[0] == true && check_win_X[1] == true && check_win_X[2] == true) {
           return 1; // game finished and X won
+          draw_checker = false;
         }
       }
     }
@@ -170,16 +176,20 @@ function is_game_finished(game_matrix) {
       if (game_matrix[i][j] == 'O') {
         check_win_O[i] = true;
         counter++;
+        draw_counter++;
         if (check_win_O[0] == true && check_win_O[1] == true && check_win_O[2] == true) {
           return 2; // game finished and O won
+          draw_checker = false;
         }
       }
       // In case matrix has 'X'
       if (game_matrix[i][j] == 'X') {
         check_win_X[i] = true;
         counter++;
+        draw_counter++;
         if (check_win_X[0] == true && check_win_X[1] == true && check_win_X[2] == true) {
           return 1; // game finished and X won
+          draw_checker = false;
         }
       }
     }
@@ -195,10 +205,12 @@ function is_game_finished(game_matrix) {
   if (game_matrix[0][0] == game_matrix[1][1] && game_matrix[0][0] == game_matrix[2][2]) {
     if (game_matrix[0][0] == 'X') {
       return 1; // game finished and X won
+      draw_checker = false;
     }
     else {
       if (game_matrix[0][0] == 'O') {
         return 2; // game finished and O won
+        draw_checker = false;
       }
     }
   }
@@ -206,13 +218,18 @@ function is_game_finished(game_matrix) {
     if (game_matrix[2][0] == game_matrix[1][1] && game_matrix[2][0] == game_matrix[0][2]) {
       if (game_matrix[2][0] == 'X') {
         return 1; // game finished and X won
+        draw_checker = false;
       }
       else {
         if (game_matrix[2][0] == 'O') {
           return 2; // game finished and O won
+          draw_checker = false;
         }
       }
     }
+  }
+  if(draw_counter/2 == 9 && draw_checker == true){
+    alert("Draw!");
   }
   return 0; // game not finished
 }

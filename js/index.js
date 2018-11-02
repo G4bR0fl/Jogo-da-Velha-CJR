@@ -232,6 +232,7 @@ function is_game_finished(game_matrix) {
   }
   if(draw_counter/2 == 9 && draw_checker == true){
     alert("Draw!");
+    reset();
   }
   return 0; // game not finished
 }

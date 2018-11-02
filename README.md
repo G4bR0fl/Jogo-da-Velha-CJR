@@ -14,7 +14,7 @@
 - [x] Make the game work properly with the correct logic;
 - [x] Each player has only 1 turn;
 - [x] Game ends when a player makes the sequence, or the when all squares are marked with 'X' or 'O' and no one has won;
-- [ ] Make the game alerts whoever has won the game or drawn, and then resetting the game automatically;
+- [x] Make the game alerts whoever has won the game or drawn, and then resetting the game automatically;
 
 **Challenges:**
 - [x] Make a counter to know which player has the most victories;

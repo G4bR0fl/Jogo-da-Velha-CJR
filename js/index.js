@@ -49,11 +49,13 @@ for (p = 0; p < 9; p++) {
         alert("X has won");
         x_vitorias++;
         document.getElementById("x_vitorias").innerHTML = x_vitorias;
+        reset();
       }
       else if (is_finished == 2) { // O wins
         alert("O has won");
         o_vitorias++;
         document.getElementById("o_vitorias").innerHTML = o_vitorias;
+        reset();
       }
 
       // Coloring according to the turn

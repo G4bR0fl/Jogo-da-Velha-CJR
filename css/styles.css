@@ -1,0 +1,34 @@
+* {
+  box-sizing: border-box;
+}
+
+.sidebar {
+  width: 20%;
+}
+
+.btn_upside {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+img {
+    padding: 0px  ;
+    margin: 0px;
+}
+
+.game_box {
+  height: 143px;
+  width: 143px;
+  border: solid 1px;
+  border-radius: 15px;
+  margin: .3em;
+}
+
+#X {
+  border-radius: 50%;
+}
+#O {
+  border-radius: 50%;
+}
